@@ -7,7 +7,7 @@ import { initials, tokenColor } from "@/lib/format";
 type Variant = "primary" | "clay" | "ghost" | "outline" | "feltBtn";
 const variants: Record<Variant, string> = {
   primary: "bg-forest text-ivory hover:bg-forest-deep",
-  clay: "bg-terracotta text-charcoal hover:bg-[#d4825f]",
+  clay: "bg-[#d1805f] text-charcoal hover:bg-[#dc9071]",
   ghost: "bg-transparent text-charcoal hover:bg-parchment",
   outline: "border border-charcoal/40 text-charcoal hover:bg-parchment",
   feltBtn: "border border-ivory/40 text-ivory hover:bg-ivory/10",
