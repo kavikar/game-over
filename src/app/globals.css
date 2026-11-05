@@ -1,0 +1,72 @@
+@import "tailwindcss";
+
+/*
+  GameNight design tokens.
+  Base palette is the brief's. Two derived shades exist only for text contrast on ivory:
+  --color-clay-ink (terracotta darkened to pass AA for text) and --color-moss-ink (olive darkened).
+*/
+@theme {
+  --color-ivory: #f5f0e6;
+  --color-parchment: #e8dfce;
+  --color-forest: #203b32;
+  --color-forest-deep: #182c25;
+  --color-charcoal: #242522;
+  --color-olive: #8a9275;
+  --color-terracotta: #c87554;
+  --color-brass: #b49a67;
+  --color-clay-ink: #a14c31;
+  --color-moss-ink: #596050;
+  --color-line: #d6cbb4;
+
+  --font-display: "DM Serif Display", Georgia, "Times New Roman", serif;
+  --font-sans: "Manrope Variable", ui-sans-serif, system-ui, sans-serif;
+
+  --radius-token: 6px;
+}
+
+:root { color-scheme: light; }
+
+html { -webkit-text-size-adjust: 100%; }
+body {
+  background: var(--color-ivory);
+  color: var(--color-charcoal);
+  font-family: var(--font-sans);
+  font-feature-settings: "tnum" 0;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Subtle paper grain on the ivory ground; keeps surfaces from looking flat without decoration. */
+.paper {
+  background-image: radial-gradient(rgba(36, 37, 34, 0.035) 1px, transparent 1px);
+  background-size: 5px 5px;
+}
+/* Felt: the active-game surface. */
+.felt {
+  background-color: var(--color-forest);
+  background-image: radial-gradient(rgba(245, 240, 230, 0.05) 1px, transparent 1px);
+  background-size: 4px 4px;
+}
+
+.num { font-variant-numeric: tabular-nums lining-nums; font-feature-settings: "tnum" 1, "lnum" 1; }
+.display { font-family: var(--font-display); font-weight: 400; letter-spacing: -0.01em; }
+.eyebrow { font-size: 0.72rem; letter-spacing: 0.14em; text-transform: uppercase; font-weight: 700; }
+
+:focus-visible { outline: 3px solid var(--color-brass); outline-offset: 2px; border-radius: 4px; }
+.felt :focus-visible { outline-color: var(--color-ivory); }
+
+::selection { background: var(--color-brass); color: var(--color-charcoal); }
+
+/* Horizontal rails scroll with snap on touch; scrollbar hidden but still operable. */
+.rail { display: flex; gap: 1rem; overflow-x: auto; scroll-snap-type: x proximity; padding-bottom: 0.5rem; scrollbar-width: none; }
+.rail::-webkit-scrollbar { display: none; }
+.rail > * { scroll-snap-align: start; flex: none; }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+}
+
+@keyframes rise { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
+.rise { animation: rise 0.28s ease-out both; }
+
+/* Respect the iOS home indicator for sticky bars. */
+.safe-b { padding-bottom: max(0.75rem, env(safe-area-inset-bottom)); }

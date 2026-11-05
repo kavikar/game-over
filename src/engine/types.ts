@@ -68,7 +68,7 @@ export interface GameMeta {
 export interface SetupField {
   key: string;
   label: string;
-  type: "select" | "number" | "toggle" | "money";
+  type: "select" | "number" | "toggle" | "money" | "percents";
   group: "variant" | "house" | "session";
   status: RuleStatus;
   help?: string;

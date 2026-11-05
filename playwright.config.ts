@@ -4,7 +4,7 @@ export default defineConfig({
   timeout: 60_000,
   use: {
     baseURL: "http://localhost:3100",
-    launchOptions: { executablePath: process.env.CHROMIUM_PATH || undefined },
+    launchOptions: { executablePath: process.env.CHROMIUM_PATH || "/opt/pw-browsers/chromium" },
   },
   webServer: { command: "npm run build && npx next start -p 3100", port: 3100, reuseExistingServer: true, timeout: 180_000 },
 });

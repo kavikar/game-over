@@ -83,11 +83,14 @@ export const poker: GameModule<PokerConfig, PokerState, PokerAction> = {
   configSchema,
   actionSchema,
   defaultConfig: () => ({ mode: "cash", buyIn: 2000, chipsPerBuyIn: 2000, allowRebuys: true, payouts: [100] }),
-  setupFields: () => [
+  setupFields: (c) => [
     { key: "mode", label: "Format", type: "select", group: "variant", status: "interpretation", options: [{ value: "cash", label: "Cash game" }, { value: "tournament", label: "Tournament" }] },
     { key: "buyIn", label: "Buy-in", type: "money", group: "session", status: "interpretation", min: 0, help: "Cost of one buy-in." },
     { key: "chipsPerBuyIn", label: "Chips per buy-in", type: "number", group: "session", status: "interpretation", min: 1, step: 100 },
     { key: "allowRebuys", label: "Allow rebuys", type: "toggle", group: "house", status: "house" },
+    ...(c.mode === "tournament"
+      ? [{ key: "payouts", label: "Payouts by place (%)", type: "percents" as const, group: "session" as const, status: "interpretation" as const, help: "Comma-separated, must total 100. Example: 60, 40" }]
+      : []),
   ],
   validateSetup(_p, c) {
     const issues: Issue[] = [];
