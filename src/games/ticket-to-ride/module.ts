@@ -103,7 +103,7 @@ export const ticketToRide: GameModule<TtrConfig, TtrState, TtrAction> = {
       if (e.ticketCount > 0 && e.ticketsCompleted === 0) issues.push({ message: `${who}: tickets completed but 0 ticket points.`, severity: "warning" });
     }
     const lp = action.entries.filter((e) => e.longestPath).length;
-    if (lp === 0) issues.push({ message: "No one has the longest path. That is allowed only if no one scored it.", severity: "warning" });
+    if (lp === 0) issues.push({ message: "Nobody is marked as having the longest path. Continue only if no one earned it.", severity: "warning" });
     return issues;
   },
   reduce(state, action) {

@@ -114,14 +114,14 @@ function PlayView({ session }: { session: Session }) {
       {Entry && (
         <div className="safe-b fixed inset-x-0 bottom-0 z-30 border-t border-ivory/20 bg-forest-deep/95 px-4 pt-3">
           <div className="mx-auto flex max-w-6xl items-center justify-between gap-3">
-            <p className="hidden text-sm text-ivory/70 sm:block">{standings[0] ? `Leading: ${session.players.find((p) => p.id === standings[0]!.playerId)?.name}` : ""}</p>
+            <p className="hidden text-sm text-ivory/70 sm:block">{live.length && standings[0] ? `Leading: ${session.players.find((p) => p.id === standings[0]!.playerId)?.name}` : ""}</p>
             <Button variant="clay" size="lg" className="w-full sm:w-auto" disabled={paused} onClick={() => { setCorrecting(null); setOpen(true); }}>{Entry.label}</Button>
           </div>
         </div>
       )}
 
       {Entry && (
-        <Sheet open={open} onClose={() => { setOpen(false); setCorrecting(null); }} title={correcting === null ? `${Entry.label} · ${mod.progressLabel(state)}` : `Correct ${hist.rows[correcting]?.label ?? "entry"}`}>
+        <Sheet open={open} onClose={() => { setOpen(false); setCorrecting(null); }} title={correcting === null ? Entry.showProgress === false ? Entry.label : `${Entry.label} · ${mod.progressLabel(state)}` : `Correct ${hist.rows[correcting]?.label ?? "entry"}`}>
           <Entry.Form
             key={`${correcting}-${live.length}`}
             state={correcting === null ? state : stateBefore(session, correcting)}

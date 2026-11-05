@@ -10,7 +10,7 @@ import { emptyData, type AppData, type Repository, type SavedPlayer } from "./ty
 
 const clock: Clock = { now: () => new Date().toISOString(), id: () => crypto.randomUUID() };
 
-class Store {
+export class Store {
   private data: AppData = emptyData();
   private listeners = new Set<() => void>();
   hydrated = false;

@@ -25,10 +25,10 @@ export function HomeView() {
 
   return (
     <PageShell>
-      <section className="grid items-end gap-8 md:grid-cols-[1.15fr_1fr] md:gap-12">
+      <section className="grid items-end gap-8 md:grid-cols-[1.25fr_1fr] md:gap-12">
         <div className="rise">
           <Eyebrow>Tabletop scorekeeper</Eyebrow>
-          <h1 className="display mt-3 text-[2.9rem] leading-[0.98] text-forest sm:text-6xl lg:text-7xl">
+          <h1 className="display mt-3 text-[2.9rem] leading-[0.98] text-forest sm:text-6xl">
             Put the pencil down.
             <br />
             <span className="text-clay-ink">Keep playing.</span>

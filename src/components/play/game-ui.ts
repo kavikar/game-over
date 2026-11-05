@@ -31,6 +31,6 @@ export interface InlineProps {
 export interface GameUI {
   Board?: ComponentType<BoardProps>;
   entry:
-    | { kind: "sheet"; label: string; Form: ComponentType<EntryProps>; correctable: boolean }
+    | { kind: "sheet"; label: string; Form: ComponentType<EntryProps>; correctable: boolean; showProgress?: boolean }
     | { kind: "inline"; Panel: ComponentType<InlineProps> };
 }

@@ -37,7 +37,7 @@ export function PlayerToken({ id, name, size = 40, ring = false }: { id: string;
   return (
     <span
       aria-hidden
-      className={cn("inline-grid shrink-0 place-items-center rounded-full font-bold text-ivory", ring && "ring-2 ring-brass ring-offset-2 ring-offset-forest")}
+      className={cn("inline-grid shrink-0 place-items-center rounded-full border-2 border-ivory/60 font-bold text-ivory", ring && "ring-2 ring-brass ring-offset-2 ring-offset-forest")}
       style={{ width: size, height: size, background: tokenColor(id), fontSize: size * 0.38 }}
     >
       {initials(name)}

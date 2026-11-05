@@ -56,8 +56,9 @@ function placeOf(s: PokerState, id: string): number | null {
 export function net(s: PokerState, id: string): number {
   const inv = invested(s, id);
   if (s.config.mode === "cash") {
-    const out = s.cashedOut[id];
-    return out === undefined ? -inv : Math.round(out * chipValueCents(s.config)) - inv;
+    // Cashed out: settled value. Still playing: marked to the last recorded chip count.
+    const chips = s.cashedOut[id] ?? s.chips[id]!;
+    return Math.round(chips * chipValueCents(s.config)) - inv;
   }
   const place = placeOf(s, id);
   const pay = place ? (tournamentPayouts(s)[place - 1] ?? 0) : 0;
@@ -152,7 +153,8 @@ export const poker: GameModule<PokerConfig, PokerState, PokerAction> = {
       }
       return b.net - a.net;
     }).map((r) => ({
-      playerId: r.playerId, rank: r.rank, value: r.net, display: fmtMoney(r.net, true),
+      playerId: r.playerId, rank: r.rank, value: r.net,
+      display: tour && r.left && inPlay(s).length > 1 ? `${s.chips[r.playerId]}` : fmtMoney(r.net, true),
       detail: `${s.buyIns[r.playerId]} buy-in${s.buyIns[r.playerId]! > 1 ? "s" : ""} · ${r.left ? `${s.chips[r.playerId]} chips` : r.playerId in s.cashedOut ? `cashed ${s.cashedOut[r.playerId]}` : "busted"}`,
     }));
   },
