@@ -31,8 +31,8 @@ describe("UNO", () => {
   });
   it("lowest mode: tie for lowest keeps the game open until broken", () => {
     let s = uno.init(ps, { mode: "lowest", target: 100 });
-    s = ok(uno, s, r("a", [["b", 50], ["c", 100]]));
-    s = ok(uno, s, r("b", [["a", 50], ["c", 0]]));
+    s = ok(uno, s, r("a", [["b", 50], ["c", 60]]));
+    s = ok(uno, s, r("b", [["a", 50], ["c", 40]]));
     expect(s.totals).toEqual({ a: 50, b: 50, c: 100 });
     expect(uno.outcome(s).finished).toBe(false);
     s = ok(uno, s, r("a", [["b", 5], ["c", 5]]));
