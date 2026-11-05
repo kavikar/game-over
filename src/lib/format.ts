@@ -4,8 +4,8 @@ export function initials(name: string): string {
   return (parts.length === 1 ? parts[0]!.slice(0, 2) : parts[0]![0]! + parts[parts.length - 1]![0]!).toUpperCase();
 }
 
-// Restrained token colors drawn from the palette (not a rainbow).
-const TOKENS = ["#203B32", "#C87554", "#8A9275", "#B49A67", "#242522", "#6B4F3A", "#4D6B5C", "#9C5A41"];
+// Restrained token colors from the palette, darkened where needed so ivory initials pass AA (4.5:1).
+const TOKENS = ["#203B32", "#A14C31", "#596050", "#7A6636", "#242522", "#6B4F3A", "#4D6B5C", "#8F4B34"];
 export function tokenColor(id: string): string {
   let h = 0;
   for (const c of id) h = (h * 31 + c.charCodeAt(0)) >>> 0;

@@ -20,7 +20,7 @@
 - [ ] Module migration hook for stored actions when rules versions change.
 - [ ] More games and editions (Phase 10 Twist, TTR 1910/Nordic, Rummy, Sequence, Catan, Scrabble).
 - [ ] Rule-update review workflow (diff + verify).
-- [ ] Error boundary and `loading.tsx` per route; PWA/offline manifest.
+- [ ] Per-route `loading.tsx`; PWA/offline manifest. (Global error and not-found pages exist.)
 - [ ] Licensed cover art.
 - [ ] Vercel project + env docs; CI running vitest and Playwright.
 - [ ] Visual regression screenshots in CI.

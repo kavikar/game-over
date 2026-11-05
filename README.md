@@ -11,8 +11,8 @@ A scorekeeper and session tracker for board and card games. One app, one univers
 ```bash
 npm install
 npm run dev          # http://localhost:3000
-npm test             # 46+ unit/integration tests (engine, all games, store, SQL schema + RLS)
-npm run build && npm run e2e   # Playwright end-to-end + accessibility (axe) tests
+npm test             # 49 unit/integration tests (engine, all games, store, SQL schema + RLS)
+npm run build && npm run e2e   # 16 Playwright end-to-end + accessibility (axe) tests
 ```
 
 No setup is needed. Data is saved in the browser (`localStorage`), so unfinished games survive a refresh or reopen. Supabase is optional and not yet wired in (see below).
